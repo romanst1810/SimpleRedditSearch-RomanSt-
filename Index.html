@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="scripts/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/reddit.min.js"></script>
+    <link href="content/site.css" rel="stylesheet" />
+    <script src="scripts/redapp.js"></script>
+    <title>Simple Reddit Search</title>
+</head>
+<body>
+    <div class="col-xs-12" ng-app="red-app">
+        <div ng-controller="redditController">
+            <div class="container">
+                <h2>Simple Reddit Search</h2>
+                <div class="row searchField">
+                    <span class="col-xs-8 col-md-8"><input type="text" class="form-control"ng-model="searchString" /></span>
+                    <span class="col-xs-4 col-md-4">
+                        <button id="submitBtn" class="form-control btn  btn-success" ng-click="BtnSearch(searchString)"><span class="glyphicon glyphicon-search glyphiconItem"></span>Get Result</button>
+                    </span>
+                </div>
+                <div class="row paginationRow">
+                    <nav aria-label="...">
+                        <ul class="pagination pagination-lg">
+                            <li class="page-item" ng-class="{disabled: prevBtnDisabled}" >
+                                <a class="page-link" href="#" ng-disabled="prevBtnDisabled" ng-click="PrevBtnSearch(searchString)" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">{{countOfPage + 1}}</a></li>
+                            <li class="page-item" ng-class="{disabled: nextBtnDisabled}">
+                                <a class="page-link" href="#" ng-disabled="nextBtnDisabled" ng-click="NextBtnSearch(searchString)">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4" ng-repeat="item in curentItemsArray">
+                            <div class="thumbnail">
+                                <a href="{{item.url}}" target="_blank">
+                                    <img ng-src="{{item.url}}" title="{{item.title}}">
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+</html>
+
